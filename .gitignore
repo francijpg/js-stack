@@ -17,8 +17,8 @@ database
 /build
 /frontend/dist
 .env
-test.env
-development.env
+.env.test
+.env.development
 
 # logs
 npm-debug.log*

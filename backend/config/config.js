@@ -4,10 +4,10 @@ if (process.env.NODE_ENV === "production"){
   dotenv.config({ path: __dirname + '/../../.env' })
 }
 if (process.env.NODE_ENV === "test"){
-  dotenv.config({ path: __dirname + '/../../test.env' })
+  dotenv.config({ path: __dirname + '/../../.env.test' })
 }
 if (process.env.NODE_ENV === "development"){
-  dotenv.config({ path: __dirname + '/../../development.env' })
+  dotenv.config({ path: __dirname + '/../../.env.development' })
 }
 
 const config = {
