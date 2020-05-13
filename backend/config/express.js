@@ -3,7 +3,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 const parser = require('body-parser')
 const { appConfig } = require('./../config/config')
-// const routes = require('./../routes/index.route')
+const routes = require('../routes')
 
 const app = express()
 
@@ -20,6 +20,6 @@ app.use(parser.json())
 app.use(cors())
 
 // routes
-// app.use(appConfig.version, routes)
+app.use(appConfig.version, routes)
 
 module.exports = app
