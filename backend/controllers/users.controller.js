@@ -10,9 +10,10 @@ const handlers = ({ axios }, api ) => ({
         const { data: content } = await axios.get(api)
         req.body.id = content.length + 1
         const user = new User(req.body)
-        await user.save(user)
-        
-        res.status(201).send(user)
+        await user.save(function (err) {
+            if (err) return res.sendStatus(400)
+            res.status(201).send(user)
+        })
     },
     put: async (req, res) => {
         const { id } = req.params
