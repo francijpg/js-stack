@@ -18,7 +18,7 @@ This is a base code for projects developed with the JavaScript language.
 ## Installation
 
 - `git clone https://github.com/francijpg/js-stack.git`
-- `cd js-stack`
+- `cd js-stack/backend`
 - `npm install`
 - `npm run dev`
 - optional: include _.env_ in your _.gitignore_
