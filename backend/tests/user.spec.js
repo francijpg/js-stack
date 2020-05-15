@@ -1,7 +1,7 @@
-const handlers = require('../controllers/users.controller')
+const handlers = require('../controllers/users')
 
 describe('controllers', () => {
-    describe('users.controllers', () => {
+    describe('users', () => {
         describe('get', () => {
             it('returns a list of users in json format', async () => {
                 const axios = {

@@ -1,4 +1,4 @@
-const User = require('./../models/user')
+const User = require('../models/user')
 
 const handlers = ({ axios }, api ) => ({
     get: async (req, res) => {
