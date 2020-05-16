@@ -4,6 +4,7 @@ This is a base code for projects developed with the JavaScript language.
 ## Features
 
 - Express
+- Environment Variables
 - REST API
 - MongoDB
 - Jest
