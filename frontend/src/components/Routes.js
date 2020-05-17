@@ -6,6 +6,7 @@ import {
     Link
 } from 'react-router-dom'
 import Home from '../pages/Home'
+import Error404 from '../pages/Error404'
 
 export default function Routes() {
     return (
@@ -19,6 +20,7 @@ export default function Routes() {
             </header>
             <Switch>
                 <Route exact path="/" component={Home}></Route>
+                <Route path="*" children={<Error404/>} />
             </Switch>
         </Router>
     )
