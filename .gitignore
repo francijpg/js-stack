@@ -14,7 +14,7 @@ database
 /frontend/coverage
 
 # production
-/build
+/frontend/build
 /frontend/dist
 .env
 .env.test
