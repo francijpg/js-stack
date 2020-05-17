@@ -46,7 +46,7 @@ This is a base code for projects developed with the JavaScript language.
   - URL: http://localhost:3000/v1/users/11
   - Method: PUT
   - Body: raw + JSON (application/json)
-  - Body Content: `{"name": "constanza", "username": "coni"}`
+  - Body Content: `{"name": "lindsey", "username": "lin"}`
 - Delete user created with:
   - URL: http://localhost:3000/v1/users/11
   - Method: DELETE
