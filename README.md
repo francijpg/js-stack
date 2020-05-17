@@ -19,14 +19,21 @@ This is a base code for projects developed with the JavaScript language.
 ## Installation
 
 - `git clone https://github.com/francijpg/js-stack.git`
-- `cd js-stack/backend`
-- `npm install`
-- `npm run dev`
+  ### for the backend:
+  - `cd js-stack/backend`
+  - `npm install`
+  - `npm run dev`
+  ### for the frontend:
+  - `cd js-stack/frontend`
+  - `yarn install`
+  - `yarn start`
+
 - optional: include _.env_ in your _.gitignore_
+
 
 #### Postman
 
-- Install [Postman](https://www.getpostman.com/apps) (or another software for http REST managment) to interact with REST API
+- Install [Postman](https://www.getpostman.com/apps) (or another software for http REST managment, for example: [Insomnia](https://insomnia.rest/) ) to interact with REST API
 - List default api users:
   - URL: http://localhost:3000/v1/users
   - Method: GET
