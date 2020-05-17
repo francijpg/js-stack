@@ -12,7 +12,15 @@ services:
     depends_on:
       - db
     command: npm run start
-    
+  frontend:
+    build: ./frontend
+    env_file: 
+      - .env
+    ports:
+      - "127.0.0.1:${FRONTEND_REACT_PORT}:${FRONTEND_REACT_PORT}"
+    depends_on:
+      - backend
+    command: npm start
   db:
     image: mongo
     volumes:
