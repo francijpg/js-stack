@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    env_file: 
+      - .env
+    ports:
+      - "127.0.0.1:${BACKEND_PORT}:${BACKEND_PORT}"    
+    links:
+      - db:mongo
+    depends_on:
+      - db
+    command: npm run start
+    
+  db:
+    image: mongo
+    volumes:
+      - ./database:/data/db
