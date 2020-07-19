@@ -19,6 +19,10 @@ This is a base code for projects developed with the JavaScript language.
 ## Installation
 
 - `git clone https://github.com/francijpg/js-stack.git`
+- To run this application, you must first create .env files depending on the environment to use
+  - production uses the file: .env
+  - testing uses the file: .env.test
+  - development uses the file: .env.development
   ### for the backend:
   - `cd js-stack/backend`
   - `npm install`
