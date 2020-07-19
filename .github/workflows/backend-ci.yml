@@ -29,6 +29,6 @@ jobs:
         cd backend
         npm install
     - name: Run jest
-    - run: |
+      run: |
         cd backend
         npm test
