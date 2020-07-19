@@ -17,7 +17,7 @@ database
 /frontend/build
 /frontend/dist
 .env
-.env.test
+#.env.test
 .env.development
 
 # logs
