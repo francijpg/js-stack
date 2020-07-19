@@ -28,6 +28,12 @@ jobs:
       run: |
         cd backend
         npm install
+    - name: MongoDB
+      services:
+        mongodb:
+          image: mongo:3.4.23
+          ports:
+            - 27017:27017
     - name: Run jest
       run: |
         cd backend
