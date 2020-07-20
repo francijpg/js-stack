@@ -17,15 +17,21 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+        mongodb-version: [4.2]
     
     steps:
-    - name: mongo
-      services:
-        mongodb:
-          image: mongo:latest #mongo:3.4.23
+    # - name: mongo
+    #   services:
+    #     mongodb:
+    #       image: mongo:latest #mongo:3.4.23
           # ports:
           #   - 27017:27017
     - uses: actions/checkout@v2
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.3.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-replica-set: insert-replica-set-name
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
