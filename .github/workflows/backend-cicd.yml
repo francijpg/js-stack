@@ -45,9 +45,17 @@ jobs:
     container:
       image: node
 
+    strategy:
+      matrix:
+        mongodb-version: [4.2]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.3.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
       - name: Install & Tests
         run: |
           cd backend
