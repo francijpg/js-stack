@@ -51,6 +51,9 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
       - name: Release
-        run: npx semantic-release
+        run: |
+          cd backend
+          npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
