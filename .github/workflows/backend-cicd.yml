@@ -58,7 +58,7 @@ jobs:
           tags: ${{ github.sha }}
       - name: Push
         run: |
-          docker push ${{ secrets.DOCKER_USER }}/${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USER }}/${{ github.repository }}
       # - name: Docker login
       #   run: |
       #     echo "$PWD"
