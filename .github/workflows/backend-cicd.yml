@@ -72,7 +72,7 @@ jobs:
           repository: ${{ github.repository }}/backend
           # repository: francijpg/js-stack
           tags: latest
-          # registry: docker.pkg.github.com
+          registry: docker.pkg.github.com
           dockerfile: ./backend/Dockerfile
           # path: ./backend
           # tag_with_ref: true
