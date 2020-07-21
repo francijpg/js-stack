@@ -69,9 +69,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ github.repository }}
+          repository: ${{ github.repository }}/backend
           # repository: francijpg/js-stack
-          tags: v1
+          tags: latest
           registry: docker.pkg.github.com
           dockerfile: ./backend/Dockerfile
           # path: ./backend
