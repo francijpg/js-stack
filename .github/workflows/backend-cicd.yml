@@ -57,7 +57,7 @@ jobs:
           tag_with_sha: true
           tags: ${{ github.sha }}
       - name: Run
-        run: docker run ${{ secrets.DOCKER_USER }}/${{ github.repository }}
+        run: docker run ${{ secrets.DOCKER_USER }}/${{ github.repository }}:${{ github.sha }}
       # - name: Docker login
       #   run: |
       #     echo "$PWD"
