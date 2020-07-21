@@ -10,39 +10,39 @@ on:
     branches: [ master ]
 
 jobs:
-  # ci:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       node-version: [12.x]
-  #       mongodb-version: [4.2]
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+        mongodb-version: [4.2]
     
-  #   steps:
-  #   - name: Git checkout
-  #     uses: actions/checkout@v2
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v2
 
-  #   - name: Use Node.js ${{ matrix.node-version }}
-  #     uses: actions/setup-node@v1
-  #     with:
-  #       node-version: ${{ matrix.node-version }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
 
-  #   - name: Start MongoDB
-  #     uses: supercharge/mongodb-github-action@1.3.0
-  #     with:
-  #       mongodb-version: ${{ matrix.mongodb-version }}
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.3.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
 
-  #   - name: Install
-  #     run: |
-  #       cd backend
-  #       npm install
+    - name: Install
+      run: |
+        cd backend
+        npm install
         
-  #   - name: Run jest
-  #     run: |
-  #       cd backend
-  #       npm test   
+    - name: Run jest
+      run: |
+        cd backend
+        npm test   
   cd:
     runs-on: ubuntu-latest
-    # needs: ci
+    needs: ci
     
     steps:
       - name: Checkout code
@@ -50,11 +50,7 @@ jobs:
       - name: Build
         run: |
           cd backend
-          docker build -t docker.pkg.github.com/${{ github.repository }} .
-      - name: Tags
-        run: |
-          cd backend
-          docker tag backend docker.pkg.github.com/${{ github.repository }}/backend:latest
+          docker build -t docker.pkg.github.com/${{ github.repository }}/backend .
       - name: Push
         run: |
           cd backend
@@ -65,7 +61,6 @@ jobs:
           
       # $ docker push docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION
       # docker push docker.pkg.github.com/xxxx/xxxx/backend:latest
-          
 
       # - name: login
       #   uses: docker/login-action@v1
