@@ -60,8 +60,8 @@ jobs:
         with:
           path: ./backend
           registry: myregistry
-          username: ${{ DOCKER_USER }}
-          password: ${{ DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       
       
       # - name: build and push to docker
