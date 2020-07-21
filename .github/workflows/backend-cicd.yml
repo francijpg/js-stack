@@ -53,6 +53,7 @@ jobs:
           docker build -t backend .
       - name: Push
         run: |
+          cd backend
           docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
           docker push docker.pkg.github.com/${{ github.repository }}/backend:latest   
 
