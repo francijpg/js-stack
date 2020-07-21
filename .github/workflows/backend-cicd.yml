@@ -57,6 +57,7 @@ jobs:
           tag_with_sha: true
           tags: ${{ github.sha }}
       - name: Push
+        uses: ./backend
         run: |
           docker push ${{ secrets.DOCKER_USER }}/${{ github.repository }}
       # - name: Docker login
