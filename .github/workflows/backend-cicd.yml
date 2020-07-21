@@ -46,15 +46,7 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: build
-        id: build
-        uses: docker/build-action@v1
-        with:
-          path: ./backend
-          repository: ${{ github.repository }}
-          tags: v1
+        uses: actions/checkout@v1
       - name: login
         uses: docker/login-action@v1
         with:
@@ -62,6 +54,14 @@ jobs:
           registry: ${{ secrets.DOCKER_USER }}/${{ github.repository }}:v1
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: build
+        id: build
+        uses: docker/build-action@v1
+        with:
+          path: ./backend
+          repository: ${{ github.repository }}
+          tags: v1
+      
       
       
       # - name: build and push to docker
