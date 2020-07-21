@@ -56,6 +56,8 @@ jobs:
           tag_with_ref: true
           tag_with_sha: true
           tags: ${{ github.sha }}
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Run
         run: docker run ${{ secrets.DOCKER_USER }}/${{ github.repository }}:${{ github.sha }}
       # - name: Docker login
