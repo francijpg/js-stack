@@ -54,7 +54,7 @@ jobs:
       - name: Tags
         run: |
           cd backend
-          docker tag backend docker.pkg.github.com/${{ github.repository }}
+          docker tag backend docker.pkg.github.com/${{ github.repository }}/backend:latest
       - name: Push
         run: |
           cd backend
