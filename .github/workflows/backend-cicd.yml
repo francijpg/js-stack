@@ -51,7 +51,11 @@ jobs:
         run: |
           cd backend
           docker build -t backend .
-
+      - name: Push
+        run: |
+          cd backend
+          docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+          
       # - name: login
       #   uses: docker/login-action@v1
       #   with:
