@@ -47,17 +47,36 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
-      - name: build and push to docker
-        uses: docker/build-push-action@v1 #./backend
+
+      - name: build
+        id: build
+        uses: docker/build-action@v1
         with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ${{ github.repository }}
           path: ./backend
-          tag_with_ref: true
-          tag_with_sha: true
-          tags: v1 #${{ github.sha }}
-          push: ${{ secrets.DOCKER_USER }}/${{ github.repository }}:v1 #${{ github.sha }}
+          repository: ${{ github.repository }}
+          tags: v1
+      - name: login
+        uses: docker/login-action@v1
+        with:
+          path: ./backend
+          registry: myregistry
+          username: ${{ DOCKER_USER }}
+          password: ${{ DOCKER_PASSWORD }}
+      
+      
+      # - name: build and push to docker
+      #   uses: docker/build-push-action@v1 #./backend
+      #   with:
+      #     username: ${{ secrets.DOCKER_USER }}
+      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      #     repository: ${{ github.repository }}
+      #     path: ./backend
+      #     tag_with_ref: true
+      #     tag_with_sha: true
+      #     tags: v1 #${{ github.sha }}
+      #     push: ${{ secrets.DOCKER_USER }}/${{ github.repository }}:v1 #${{ github.sha }}
+
+
       # - name: push
       #   uses: docker/push-action@v1
       #   with:
