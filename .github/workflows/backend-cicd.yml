@@ -58,9 +58,8 @@ jobs:
           tags: ${{ github.sha }}
       - name: Push
         run: |
-          echo "$PWD"
-          docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USER }}/back:latest
+          docker push ${{ secrets.DOCKER_USER }}/backend:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USER }}/backend:latest
       # - name: Docker login
       #   run: |
       #     echo "$PWD"
