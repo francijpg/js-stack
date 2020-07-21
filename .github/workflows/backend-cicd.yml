@@ -50,7 +50,7 @@ jobs:
       - name: Build
         run: |
           cd backend
-          docker build -t backend .
+          docker build -t docker.pkg.github.com/${{ github.repository }}/backend .
       - name: Push
         run: |
           cd backend
