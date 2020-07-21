@@ -47,8 +47,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
-      - name: location
-        uses: ./backend
+      # - name: location
+      #   uses: ./backend
       - name: build and push to docker
         uses: docker/build-push-action@v1 #./backend
         with:
