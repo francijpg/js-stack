@@ -55,7 +55,7 @@ jobs:
         run: |
           cd backend
           docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-          docker push ${{ secrets.DOCKER_USER }}/backend:latest   
+          docker push docker.pkg.github.com/${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}/backend:latest   
 
           
       # docker push docker.pkg.github.com/xxxx/xxxx/backend:latest
