@@ -47,26 +47,26 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      # - name: build and push to docker
-      #   uses: docker/build-push-action@v1
-      #   with:
-      #     username: ${{ secrets.DOCKER_USER }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
-      #     repository: ${{ github.repository }}
-      #     tag_with_ref: true
-      #     tag_with_sha: true
-      #     tags: ${{ github.sha }}
-      - name: Docker login
-        run: |
-          echo "$PWD"
-          docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build
-        run: docker build -t back .
-      - name: Tags
-        run: |
-          docker tag back ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-          docker tag back ${{ secrets.DOCKER_USER }}/back:latest
-      - name: Push
-        run: |
-          docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USER }}/back:latest
+      - name: build and push to docker
+        uses: ./backend/docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ${{ github.repository }}
+          tag_with_ref: true
+          tag_with_sha: true
+          tags: ${{ github.sha }}
+      # - name: Docker login
+      #   run: |
+      #     echo "$PWD"
+      #     docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+      # - name: Build
+      #   run: docker build -t back .
+      # - name: Tags
+      #   run: |
+      #     docker tag back ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
+      #     docker tag back ${{ secrets.DOCKER_USER }}/back:latest
+      # - name: Push
+      #   run: |
+      #     docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
+      #     docker push ${{ secrets.DOCKER_USER }}/back:latest
