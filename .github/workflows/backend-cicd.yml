@@ -68,14 +68,15 @@ jobs:
         uses: docker/build-push-action@v1 #./backend
         with:
           username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}/backend
           # repository: francijpg/js-stack
           tags: latest
           registry: docker.pkg.github.com
           dockerfile: ./backend/Dockerfile
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          tag_with_ref: true
+        # env:
+        #   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           # path: ./backend
           # tag_with_ref: true
           # tag_with_sha: true
