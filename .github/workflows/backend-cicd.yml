@@ -61,20 +61,25 @@ jobs:
       #     path: ./backend
       #     repository: ${{ github.repository }}
       #     tags: v1
-      
-      
-      
-      - name: build and push to docker
-        uses: docker/build-push-action@v1 #./backend
+      - name: login
+        uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}/backend
-          # repository: francijpg/js-stack
-          tags: latest
-          registry: docker.pkg.github.com
+          username: ${{ DOCKER_USER }}
+          password: ${{ DOCKER_PASSWORD }}
           dockerfile: ./backend/Dockerfile
-          tag_with_ref: true
+            
+      
+      # - name: build and push to docker
+      #   uses: docker/build-push-action@v1
+      #   with:
+      #     username: ${{ secrets.DOCKER_USER }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
+      #     repository: ${{ github.repository }}/backend
+      #     tags: latest
+      #     registry: docker.pkg.github.com
+      #     dockerfile: ./backend/Dockerfile
+      #     tag_with_ref: true
+
         # env:
         #   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           # path: ./backend
