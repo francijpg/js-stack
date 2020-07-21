@@ -50,17 +50,13 @@ jobs:
       - name: Build
         run: |
           cd backend
-          docker build -t backend .
-      # docker.pkg.github.com/${{ github.repository }}/backend .
-      - name: Tags
-        run: |
-          cd backend
-          docker tag backend docker.pkg.github.com/${{ github.repository }}/backend:latest
+          docker build -t docker.pkg.github.com/${{ github.repository }}/backend .
       - name: Push
         run: |
           cd backend
           docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
           docker push docker.pkg.github.com/${{ github.repository }}/backend:latest   
+          docker push ${{ secrets.DOCKER_USERNAME }}/backend:${{ github.sha }}
 
           
       # $ docker push docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION
