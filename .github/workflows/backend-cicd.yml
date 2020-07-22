@@ -50,13 +50,21 @@ jobs:
       - name: Build
         run: |
           cd backend
-          docker build . --tag backend:v1
+          docker build . --tag ${{ github.actor }}/backend:v1
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker tag backend:v1 ${{ github.actor }}/backend
           docker push ${{ github.actor }}/backend
+        # docker build . --tag #backend:v1
+        # docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        # docker tag backend:v1 ${{ github.actor }}/backend
+        # docker push ${{ github.actor }}/backend
 
         # docker tag 175a84daa8d5 francijpg/backend:v1
         # docker push francijpg/backend
+
+      # for generate git-package
+      # - name: Build
+      #   run: |
+      #     cd backend
       #     docker build -t docker.pkg.github.com/${{ github.repository }}/backend .
       # - name: Push
       #   run: |
