@@ -50,9 +50,9 @@ jobs:
       - name: Build
         run: |
           cd backend
-          docker build . --tag ${{ github.actor }}/backend:v1
+          docker build . --tag francijpg/backend:v1
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push ${{ github.actor }}/backend
+          docker push francijpg/backend
         # docker build . --tag #backend:v1
         # docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         # docker tag backend:v1 ${{ github.actor }}/backend
