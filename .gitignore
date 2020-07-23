@@ -16,7 +16,7 @@ database
 # production
 /frontend/build
 /frontend/dist
-# .env
+.env
 #.env.test
 .env.development
 
