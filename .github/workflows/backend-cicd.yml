@@ -54,7 +54,7 @@ jobs:
         run: |
           cd backend
           docker build . --tag js-stack-backend:v1
-          docker tag js-stack-backend:v1 ${{ github.actor }}/js-stack-backend
+          docker tag js-stack-backend:v1 ${{ github.actor }}/js-stack-backend:v1
       - name: Push
         run: |
           docker push ${{ github.actor }}/js-stack-backend
