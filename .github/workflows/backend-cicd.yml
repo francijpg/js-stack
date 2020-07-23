@@ -47,18 +47,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Login
+      - name: Docker Login
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and Tag
         run: |
           cd backend
-          docker build . --tag backend:v1
-          docker tag backend:v1 ${{ github.actor }}/backend
+          docker build . --tag js-stack-backend:v1
+          docker tag js-stack-backend:v1 ${{ github.actor }}/js-stack-backend
       - name: Push
         run: |
-          cd backend
-          docker push ${{ github.actor }}/backend
+          docker push ${{ github.actor }}/js-stack-backend
 
 
       # for generate git-package
@@ -71,76 +70,3 @@ jobs:
       #     cd backend
       #     docker login docker.pkg.github.com -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
       #     docker push docker.pkg.github.com/${{ github.repository }}/backend:latest
-
-
-          
-      # $ docker push docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION
-      # docker push docker.pkg.github.com/xxxx/xxxx/backend:latest
-
-      # - name: login
-      #   uses: docker/login-action@v1
-      #   with:
-      #     path: ./backend
-      #     registry: ${{ secrets.DOCKER_USER }}/${{ github.repository }}:v1
-      #     username: ${{ secrets.DOCKER_USER }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
-      # - name: build
-      #   id: build
-      #   uses: docker/build-action@v1
-      #   with:
-      #     path: ./backend
-      #     repository: ${{ github.repository }}
-      #     tags: v1
-
-      # - name: build
-      #   id: build
-      #   uses: docker/build-action@v1
-      #   with:
-      #     repository: ${{ github.repository }}/backend
-      #     tags: latest
-      #     dockerfile: ./backend/Dockerfile
-      # - name: login
-      #   uses: docker/login-action@v1
-      #   with:
-      #     # registry: docker.pkg.github.com #registry: ${{ secrets.DOCKER_USERNAME }}/${{ github.repository }}:latest
-      #     username: ${{ secrets.DOCKER_USERNAME }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
-      #     dockerfile: ./backend/Dockerfile
-            
-      
-      # - name: build and push to docker
-      #   uses: docker/build-push-action@v1
-      #   with:
-      #     username: ${{ secrets.DOCKER_USER }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-      #     repository: ${{ github.repository }}/backend
-      #     tags: latest
-      #     registry: docker.pkg.github.com
-      #     dockerfile: ./backend/Dockerfile
-      #     tag_with_ref: true
-     
-          # tag_with_ref: true
-          # tag_with_sha: true
-      
-          # push: ${{ secrets.DOCKER_USER }}/${{ github.repository }}:v1 #${{ github.sha }}
-
-      # - name: push
-      #   uses: docker/push-action@v1
-      #   with:
-      #     registry: myregistry
-      #     tags: ${{ outputs.build.tags }}
-          # push: ${{ secrets.DOCKER_USER }}/${{ github.repository }}:${{ github.sha }}
-      # - name: Docker login
-      #   run: |
-      #     echo "$PWD"
-      #     docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
-      # - name: Build
-      #   run: docker build -t back .
-      # - name: Tags
-      #   run: |
-      #     docker tag back ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-      #     docker tag back ${{ secrets.DOCKER_USER }}/back:latest
-      # - name: Push
-      #   run: |
-      #     docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-      #     docker push ${{ secrets.DOCKER_USER }}/back:latest
