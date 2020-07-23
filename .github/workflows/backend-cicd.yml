@@ -45,21 +45,21 @@ jobs:
     # needs: ci
     
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Build
+      - name: Login
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and Tag
         run: |
           cd backend
-          docker build . --tag ${{ github.actor }}/backend:v1
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build . --tag backend:v1
+          docker tag backend:v1 ${{ github.actor }}/backend
       - name: Push
         run: |
           cd backend
-        # docker tag backend:v1 ${{ github.actor }}/backend
           docker push ${{ github.actor }}/backend
 
-        # docker tag backend:v1 francijpg/backend:v1
-        # docker push francijpg/backend
 
       # for generate git-package
       # - name: Build
