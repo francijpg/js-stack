@@ -1,36 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const UserList = () => {
-    const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        let url = "https://jsonplaceholder.typicode.com/users"
-        
-        fetch(url)
-            .then(response => response.json())
-            .then(json => {
-                json.forEach(element => {
-                    let userData = {
-                        id: element.id,
-                        name: element.name,
-                        website: element.website
-                    }
-                    setUsers(users => [...users, userData])
-                });
-            })
-    }, [])
+  useEffect(() => {
+    let url = "https://jsonplaceholder.typicode.com/users";
 
-    return (
-        <>
-            <h3>JsonPlaceHolder User List</h3>
-            {users.map(userData => (
-                <figure key={userData.id}>
-                    <figcaption>{userData.name}</figcaption>
-                    <figcaption>{userData.website}</figcaption>
-                </figure>
-            ))}
-        </>
-    )
-}
+    axios.get(url)
+      .then((response) => {
+        console.log(response.status);
+        if (response.status === 200) {
+          response.data.forEach((element) => {
+            let userData = {
+              id: element.id,
+              name: element.name,
+              website: element.website,
+            };
+            setUsers((users) => [...users, userData]);
+          });
+        }
+      }, (error) => {
+        console.log(error.response.status)
+        console.log(error);
+      })
+  }, []);
 
-export default UserList
+  return (
+    <>
+      <h3>JsonPlaceHolder User List</h3>
+      {users.map((userData) => (
+        <figure key={userData.id}>
+          <figcaption>{userData.name}</figcaption>
+          <figcaption>{userData.website}</figcaption>
+        </figure>
+      ))}
+    </>
+  );
+};
+
+export default UserList;
